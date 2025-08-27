@@ -1,0 +1,424 @@
+/* Reset & tipografia */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Bodoni Moda', serif;
+}
+
+
+/* BODY com layout em coluna e responsivo */
+body {
+  color: #eee;
+  min-height: 100vh;
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Fundos alternáveis */
+.black-background {
+  background-color: #121212;
+  background-image: none;
+}
+
+.image-background {
+  background: url('logo.JPG') no-repeat center center fixed;
+  background-size: auto;
+  background-color: #121212;
+}
+
+/* ENVOLVE LOGO + BOTÃO para alinhar verticalmente */
+.top-bar-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* LOGO no topo centralizada */
+.logo-wrapper {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.responsive-logo {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+}
+
+/* Container principal */
+.container {
+  background-color: rgba(27, 27, 27, 0.25); 
+  padding: 50px 40px;
+  border-radius: 14px;
+  box-shadow: 0 0 40px rgba(224, 62, 47, 0.6);
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  backdrop-filter: blur(4px); 
+}
+
+/* Títulos */
+.title {
+  font-size: 2.6rem;
+  color: #e03e2f;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #eee;
+  border-bottom: 3px solid #e03e2f;
+  padding-bottom: 8px;
+  margin-bottom: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Formulários */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #eee;
+  margin-bottom: 8px;
+  user-select: none;
+  margin-top: 100px;
+}
+
+.input {
+  background: #222;
+  border: 2px solid #3e3e3e;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #eee;
+  transition: border-color 0.3s ease;
+}
+
+.input::placeholder {
+  color: #666;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #e03e2f;
+  box-shadow: 0 0 12px #e03e2f99, 0 0 4px #f9d71ccc;
+}
+
+/* Botões */
+.btn {
+  background: #e03e2f;
+  padding: 16px 0;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(224, 62, 47, 0.5);
+}
+
+.btn:hover {
+  background: #b32a22;
+  box-shadow: 0 6px 25px rgba(179, 42, 34, 0.8);
+}
+
+.btn-register {
+  background: #a62622;
+  box-shadow: 0 4px 20px rgba(166, 38, 34, 0.5);
+}
+
+.btn-register:hover {
+  background: #7f1f1b;
+  box-shadow: 0 6px 25px rgba(127, 31, 27, 0.7);
+}
+
+/* Descrição */
+.description {
+  text-align: center;
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Login e Cadastro lado a lado */
+.form-sections {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.form-block {
+  flex: 1;
+  min-width: 260px;
+}
+
+/* Lista de cards de filmes */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+/* Estilo individual do card */
+.movie-card {
+  background-color: #1e1e1e;
+  border-left: 4px solid #e03e2f;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 15px rgba(224, 62, 47, 0.2);
+  transition: background-color 0.3s ease;
+  flex: 1 1 280px;
+  max-width: 320px;
+}
+
+.movie-card:hover {
+  background-color: #2a2a2a;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.movie-card h3 {
+  font-size: 1.3rem;
+  color: #f5f5f5;
+}
+
+.year {
+  color: #f9d71c;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.genre {
+  color: #bbb;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+/* Estrelas para avaliação */
+.rating-display {
+  margin-bottom: 14px;
+}
+
+.star {
+  font-size: 1.4rem;
+  color: #444;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star.filled {
+  color: #f9d71c;
+}
+
+/* Botão de avaliação */
+.rate-btn {
+  background-color: #e03e2f;
+  color: white;
+  padding: 10px 14px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.rate-btn:hover {
+  background-color: #b63027;
+}
+
+/* Botão perfil fixo no canto superior */
+.perfil-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #222;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.perfil-btn:hover {
+  background-color: #444;
+}
+
+/* ---------- NOVO BLOCO PARA CARD COM IMAGEM ALINHADA ---------- */
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Imagem do filme */
+.movie-poster {
+  width: 100px;
+  max-height: 160px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.03);
+}
+
+/* Responsivo: tablets e celulares */
+@media (max-width: 768px) {
+  .form-sections {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .logo-img, .responsive-logo {
+    max-width: 140px;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie-poster {
+    width: 80%;
+    max-height: 140px;
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 35px 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  background: #222;
+  border: 2px solid #3e3e3e;
+  padding: 14px 48px 14px 16px; /* espaço para o ícone à direita */
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #eee;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input::placeholder {
+  color: #666;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #e03e2f;
+  box-shadow: 0 0 12px #e03e2f99, 0 0 4px #f9d71ccc;
+}
+
+/* Ícone dentro do input */
+.input-icon {
+  position: absolute;
+  right: 16px;
+  font-size: 1.2rem;
+  color: #e03e2f;
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.input:focus + .input-icon {
+  color: #f9d71c;
+}
+
+/* Botão estilizado */
+.submit-btn {
+  background: #e03e2f;
+  padding: 16px 0;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(224, 62, 47, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #b32a22;
+  box-shadow: 0 6px 25px rgba(179, 42, 34, 0.8);
+}
+.acesso{
+  margin-bottom: 40px;
+}
+.register-link{
+  margin-top: 40px;
+}

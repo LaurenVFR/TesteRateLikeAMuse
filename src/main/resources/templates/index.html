@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Like a Muse</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap" rel="stylesheet">
+</head>
+<body class="black-background">
+
+    <div class="logo-wrapper">
+        <img th:src="@{/images/logo2.png}" alt="Logo Rate Like a Muse" class="responsive-logo">
+    </div>
+
+    <div class="container text-center">
+        <h1 class="title">Rate Like a Muse</h1>
+        <p class="subtitle">Sua plataforma para avaliar os indicados ao Oscar.</p>
+
+        <div class="login-container">
+            <h2 class="acesso">Acesse sua conta</h2>
+
+            <form th:action="@{/login}" method="post" class="login-form">
+
+            <div th:if="${param.error}" class="error-message">
+                Usuário ou senha inválidos.
+            </div>
+            <div th:if="${param.logout}" class="success-message">
+                Você foi desconectado com sucesso.
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="label">Usuário:</label>
+                <div class="input-wrapper">
+                <input type="text" id="username" name="username" class="input" required placeholder="Digite seu usuário" />
+                <span class="input-icon">👤</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="label">Senha:</label>
+                <div class="input-wrapper">
+                <input type="password" id="password" name="password" class="input" required placeholder="Digite sua senha" />
+                <span class="input-icon">🔒</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn submit-btn">Entrar</button>
+
+            </form>
+
+            <p class="register-link">Não tem uma conta? <a th:href="@{/register}">Registre-se</a></p>
+        </div>
+
+        <hr class="divider">
+
+    </div>
+
+</body>
+</html>

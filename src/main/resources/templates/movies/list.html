@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmes - RateLikeAMuse</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .delete-btn {
+            background: none; border: none; padding: 0;
+            font-size: 1.2rem;
+            cursor: pointer; vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="black-background">
+    <a th:href="@{/profile}" class="perfil-btn">Meu Perfil</a>
+    
+    <div class="logo-wrapper">
+        <img th:src="@{/images/logo2.png}" alt="Logo RateLikeAMuse" class="responsive-logo" />
+    </div>
+
+    <div class="container">
+        <h1 class="title">Filmes</h1>
+
+        <div class="admin-actions" sec:authorize="hasRole('ADMIN')" style="text-align: center; margin-bottom: 20px;">
+            <a th:href="@{/movies/new}" class="rate-btn">Adicionar Novo Filme</a>
+        </div>
+
+        <div class="card-list">
+            <div class="movie-card" th:each="movie : ${movies}" th:attr="data-title=${movie.nome}"> 
+                <div class="card-header">
+                    <div>
+                        <h3 th:text="${movie.nome}">Nome do Filme</h3>
+                        <span class="year" th:text="${movie.ano}">2024</span>
+                    </div>
+                    <div class="average-rating">
+                        Média: <span th:text="${#numbers.formatDecimal(averageRates.get(movie.id), 1, 1)}">0</span> / 5
+                    </div>
+                    <div class="actions" sec:authorize="hasRole('ADMIN')">
+				    <form th:action="@{/movies/delete(id=${movie.id})}" method="post" style="display:inline;">
+				        <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este filme?');" class="delete-btn" title="Deletar Filme">
+                            🗑️
+				        </button>
+				    </form>
+				</div>
+                </div>
+
+                <div class="card-body"> 
+                    <div class="text-content"> 
+                        <p><strong>Gênero:</strong> <span th:text="${movie.genero}">Gênero do Filme</span></p>
+
+                        <form th:action="@{/rate}" method="post" class="rating-form" sec:authorize="isAuthenticated()">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <input type="hidden" name="movieId" th:value="${movie.id}" />
+                            <input type="hidden" name="userId" th:value="${#authentication.principal.id}" /> 
+                            <input type="hidden" name="score" class="rating-value" value="0" />
+
+                            <div class="rating-display"> 
+                                <span class="star" data-value="1">★</span> 
+                                <span class="star" data-value="2">★</span> 
+                                <span class="star" data-value="3">★</span> 
+                                <span class="star" data-value="4">★</span> 
+                                <span class="star" data-value="5">★</span> 
+                            </div>
+                            <button type="submit" class="rate-btn">Avaliar</button> 
+                        </form>
+                    </div>
+                    
+                    <img th:src="@{/images/poster-movies/{posterFile}(posterFile=${movie.posterUrl})}" 
+                         th:alt="${'Capa do filme ' + movie.nome}" 
+                         class="movie-poster">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script> 
+    document.querySelectorAll('.movie-card').forEach(card => {
+        const stars = card.querySelectorAll('.star');
+        const ratingValueInput = card.querySelector('.rating-value'); 
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.dataset.value);
+                ratingValueInput.value = rating;
+                stars.forEach(s => {
+                    s.classList.toggle('filled', parseInt(s.dataset.value) <= rating);
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
